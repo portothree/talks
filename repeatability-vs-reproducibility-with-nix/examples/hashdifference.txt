@@ -1,0 +1,12 @@
+# Our method
+docker save $(docker build --no-cache -q .) -o foo1.tar
+docker save $(docker build --no-cache -q .) -o foo2.tar
+ls -lah foo*
+sha256sum foo1.tar
+sha256sum foo2.tar
+
+# Our result
+-rw------- 1 matthew users 111M Jul 26 11:24 foo1.tar
+-rw------- 1 matthew users 111M Jul 26 11:23 foo2.tar
+3a44da283eef76d9a4df8a914c45d535353f529ff53278813c0bcad8b248c43c  foo1.tar
+9bd66f2b9e9a265a8dff470e4e30fe4decbfd5f680cc07c33d071667fd94b56e  foo2.tar
