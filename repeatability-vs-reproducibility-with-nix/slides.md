@@ -96,8 +96,6 @@ cat examples/hashdifference.txt
 
 # So how do we do this with a Nix Flake instead?
 
-There's a function someone made called
-
 ```bash
 cat flake.nix
 nix flake show
