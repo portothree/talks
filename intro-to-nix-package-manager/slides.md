@@ -109,3 +109,7 @@ Since the old version of a package are still there, you can rollback your machin
 # Reproducibility
 
 Through Nix, it is very easy to replicate development environments. Fixing the "works on my machine" problem, since everything is declarative and pinned.
+
+---
+
+# Questions?
