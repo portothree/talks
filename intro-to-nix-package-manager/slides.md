@@ -1,22 +1,35 @@
 ---
 author: Gustavo Porto
-date: ""
+date: "2023"
 paging: Slide %d / %d
 ---
 
-# Introduction to the Nix package manager
+# Introduction to Nix
 
-Traditional package managers like `apt` and `Pacman` has multiple flaws which make them unreliable to be used in environments that need highly stable systems such as servers.
+Gustavo Porto
+
+@portothree
+
+2023
 
 ---
 
-# Problems with traditional package managers 
+# Definitions
 
-- Changes can't be undone
-- Updates are not atomic (instant)
-- Dependency Hell
-    - Circular dependency conflict
-    - Linear dependency conflict
+NixOS: Distribution
+
+Nix: Source-based package manager
+
+Nixpkgs: "Standard library"
+  - Contains:
+    - Packages
+    - Functions
+    - Compiling instructions for multiple languages / tools
+    - NixOS modules and options
+
+---
+
+# Nix - Language
 
 ---
 
@@ -80,6 +93,40 @@ result/bin/hello
 ```
 ---
 
+# Puzzle
+
+What does that do?
+
+```bash
+cat ./examples/puzzle.nix
+```
+
+---
+
+```bash
+nix eval -f ./examples/puzzle.nix
+```
+
+Because the language is lazy, the question we have to ask is "What do we want from that attribute set"
+
+---
+
+Nix - Package manager
+
+---
+
+# Problems with traditional package managers 
+
+Traditional package managers like `apt` and `Pacman` has multiple flaws which make them unreliable to be used in environments that need highly stable systems such as servers.
+
+- Changes can't be undone
+- Updates are not atomic (instant)
+- Dependency Hell
+    - Circular dependency conflict
+    - Linear dependency conflict
+
+---
+
 # Solving traditional package manager problems
 
 By being a purely functional package manager. Nix was designed to be a reliable and reproducible, solving the common problems posed by traditional package managers.
@@ -109,6 +156,77 @@ Since the old version of a package are still there, you can rollback your machin
 # Reproducibility
 
 Through Nix, it is very easy to replicate development environments. Fixing the "works on my machine" problem, since everything is declarative and pinned.
+
+---
+
+# NixOS - Distribution
+
+---
+
+# How do you make a Linux distribution out of that?
+
+- A distribution is a bunch of files
+- In the end, the Nix package manager creates files
+- Let's use Nix to create every (non user data) file
+
+---
+
+# Introducing the module system
+
+```nix
+{ ... }:
+{
+  services.openssh.enable = true;
+}
+```
+
+---
+
+# Customizing the SSH server config
+ 
+```nix
+{ ... }:
+{
+  services.openssh = {
+    enable = true;
+    openFirewall = false;
+    allowSFTP = true;
+    extraConfig = ''
+      # Extra verbatim contents of sshd_config
+    '';
+  };
+}
+```
+
+---
+
+# Creating our own systemd module
+
+```nix
+{ ... }:
+{
+  systemd.services.myService = {
+    description = "My really awesome service";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    serviceConfig = {
+      ExecStart = "${myPackage}/bin/myExec";
+      DynamicUser = true;
+    };
+  };
+}
+```
+
+---
+
+# Other advantages
+
+- Made out of simple building blocks
+  - Makes it possible to develop tools
+- Distributed Nix store
+- Very strong community
+- Usage as a server or workstation
+- "Works for me" => "Works for everybody"
 
 ---
 
