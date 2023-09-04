@@ -55,7 +55,20 @@ Gustavo Porto
 - **2019**: Saw a commit to a project I mantained at the time to add Nix installation instructions
   - In my mind Nix was just a regular packager manager and should behave just like `brew`, `yay` or `apt`.
   - So I raised a new PR and someone explained Nix properly to me.
-  - -- INCLUDE PR IMAGE --
+  - -- INCLUDE PR SCREENSHOT --
+
+---
+
+# What I do with Nix
+
+-- INCLUDE homelab REPO SCREENSHOT --
+-- INCLUDE dotfiles REPO SCREENSHOT --
+
+---
+
+# What are people saying about Nix
+
+-- INCLUDE TWEETS SCREENSHOTS --
 
 ---
 
@@ -198,6 +211,20 @@ Since the old version of a package are still there, you can rollback your machin
 # Reproducibility
 
 Through Nix, it is very easy to replicate development environments. Fixing the "works on my machine" problem, since everything is declarative and pinned.
+
+---
+
+# The old way
+
+Written instructions:
+
+Gitlab repo with instructions to compile and install Biozard Outbreak private server
+
+https://gitlab.com/gh0stl1ne/Bioserver1/-/blob/master/Biohazard%20Outbreak%20private%20server.pdf
+
+Nix flake:
+https://github.com/MatthewCroughan/bioflake/blob/master/flake.nix
+
 
 ---
 
