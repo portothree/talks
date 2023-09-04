@@ -14,18 +14,60 @@ Gustavo Porto
 
 ---
 
-# Definitions
+# Introduction to Nix
 
-NixOS: Distribution
+## What is Nix?
 
-Nix: Source-based package manager
+- A programming language
+- A package manager
+- A ~20MB program written in C++
+- A method of compiling software from source
+- A Linux distribution*
 
-Nixpkgs: "Standard library"
-  - Contains:
-    - Packages
-    - Functions
-    - Compiling instructions for multiple languages / tools
-    - NixOS modules and options
+## What does Nix achieve
+
+- Infrastructure as Code
+- Reproducibility
+- Software supply chain security
+
+---
+
+## Timeline
+
+- **2003**: Fist Nix commit by Eelco Dolstra, the invetor
+- **2004**: First papers on Nix
+- **2006**: The Nix Thesis
+- **2006**: NixOS By Armijn Hemel
+- **2021**: NixOS 21.05:
+  - `1745` Contributors, `292,223` Commits
+- **2022 (December)**: NixOS 22.11:
+  - `4758` Contributors, `428,836` Commits
+- **2023 (Now)**: NixOS 23.05:
+  - `5836` Contributors, `522,209` Commits
+
+---
+
+# How I started using Nix
+
+- **2018**: Started hearing about it, but was too deep into the Debian community
+  - Installed and tried it once to see if it could replace `apt`
+  - End up forgetting about it
+- **2019**: Saw a commit to a project I mantained at the time to add Nix installation instructions
+  - In my mind Nix was just a regular packager manager and should behave just like `brew`, `yay` or `apt`.
+  - So I raised a new PR and someone explained Nix properly to me.
+  - -- INCLUDE PR IMAGE --
+
+---
+
+# What is Nixpkgs
+
+- "Standard library"
+- 90,000+ reproducible recipes
+- A repo on GitHub containing:
+  - Packages
+  - Functions
+  - Compiling instructions for multiple languages / tools
+  - NixOS modules and options
 
 ---
 
@@ -160,6 +202,12 @@ Through Nix, it is very easy to replicate development environments. Fixing the "
 ---
 
 # NixOS - Distribution
+
+Built from Nix Language, package manager and Nixpkgs collection
+
+The result of running Nix Buid or Nix code you have written
+
+Completely declarative
 
 ---
 
