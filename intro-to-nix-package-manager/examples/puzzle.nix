@@ -1,0 +1,5 @@
+rec {
+  a = {
+    inherit a;
+  };
+}
